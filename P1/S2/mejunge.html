@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej-1: Encabezados</title>
+</head>
+<body>
+    <h1>Encabezado H1</h1>
+     <p>Esto es un párrafo. Puede ser todo lo extenso que se quiera.
+        Aunque en el HTML lo coloquemos en varias
+        líneas,
+        en el renderizado se coloca en la misma línea
+        y se ajusta al ancho de la pantalla
+        del navegador
+    </p>
+    <h2>Encabezado H2</h2>
+    <p>Esto es otro párrafo.
+        Se coloca separado del anterior
+    </p>
+    <p>Este párrafo tiene 3 líneas,
+        pero el navegador las coloca juntas
+        Otra línea...          y los espacios también
+        se eliminan
+    </p>
+    <h3>Lista ordenada Pasos:</h3>
+    <ol>
+        <li>Conectarse al servidor</li>
+        <li>Solicitar documento</li>
+        <li>Esperar respuesta</li>
+    </ol>
+    
+    <h2>Universidad Rey Juan Carlos</h2>
+    <!-- alt es el texto alternativo que se muestra si no se puede cargar la imagen, o para lectores de pantalla. -->
+    <img src="../../urjc-logo.png" alt="Imagen: Logo-urjc">
+    <p>Ejemplo de colocar una imagen</p>
+</body>
+    <h3>Encabezado H3</h3>
+    <table>
+        <!-- Cada fila se delimita con <tr></tr> -->
+        <tr>
+            <!-- Para el encabezado de la tabla se utiliza <th> en lugar de <td>. -->
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Descripcion</th>
+        </tr>
+        <tr>
+            <!-- cada celda con <td>. -->
+            <td>Chuck</td>
+            <td>Norris</td>
+            <td>Creó a Dios</td>
+            
+        </tr>
+        <tr>
+            <td>Trollface</td>
+            <td>....</td>
+            <td>Eres un troll</td>
+        </tr>
+        <tr>
+            <td>Ecce</td>
+            <td>Homo</td>
+            <td>Genialidad artística</td>
+        </tr>
+    </table>
+</body>
+    <h4>Encabezado H4</h4>
+    <h5>Lista no ordenada.</h5>
+    <ul>
+        <li>Leche</li>
+        <li>Café</li>
+        <li>Pan</li>
+    </ul>
+    <h5>Encabezado H5</h5>
+    <h5>Apuntes de CSAAI</h2>
+    <p>
+        <a href="https://github.com/jesusgpa/2023-2024-CSAAI/wiki">Página principal</a>
+        : en Github
+    </p>
+    <h5>Temas que estamos viendo</h5>
+    <p>
+        <a href="https://github.com/jesusgpa/2023-2024-CSAAI/wiki/Sesion-1-Introduccion-a-las-tecnologias-web">[Tema 1]</a>
+        <a href="https://github.com/jesusgpa/2023-2024-CSAAI/wiki/Sesion-2-HTML">[Tema 2]</a>
+    </p>
+    <h6>Encabezado H6</h6>
+    <h6>Lista de definición</h6>
+    <dl>
+        <dt>Lácteo</dt>
+        <dd>Leche</dd>
+        <dt>Hidrato</dt>
+        <dd>Pan</dd>
+    </dl>
+
+    <h2>Botón con Imagen</h2>
+    
+    <!-- Opción 1: Botón HTML con imagen dentro -->
+    <button onclick="mostrarImagen()">
+        <img src="../../urjc-logo.png" alt="Logo URJC" width="50">
+        Pulsar para ver imagen
+    </button>
+    
+    <br>
+    <img id="imagenMostrada" src="../../urjc-logo.png" alt="Imagen mostrada">
+    
+    <script>
+        function mostrarImagen() {
+            var imagen = document.getElementById('imagenMostrada');
+            if (imagen.style.display === 'none') {
+                imagen.style.display = 'block';
+            } else {
+                imagen.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
