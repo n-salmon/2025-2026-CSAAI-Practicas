@@ -1,57 +1,493 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Dos columnas</title>
-
-   <!-- Hoja de estilo -->
-   <link rel="stylesheet" href="2c-template.css">    
-
+    <title>CV | Violet Sorrengail - Inicio</title>
+    <link rel="stylesheet" href="2c-template.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: 
+                linear-gradient(180deg, rgba(47, 24, 16, 0.85) 0%, rgba(42, 33, 26, 0.9) 50%, rgba(26, 21, 18, 0.95) 100%),
+                url('Libros Fondos.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #e8e8e8;
+            min-height: 100vh;
+        }
+        
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.95) 0%, rgba(101, 67, 33, 0.95) 100%);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #8B4513;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5em;
+            color: #D2B48C;
+            text-decoration: none;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: #e8e8e8;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background: rgba(210, 180, 140, 0.2);
+            color: #D2B48C;
+        }
+        
+        nav a.active {
+            background: rgba(210, 180, 140, 0.3);
+            color: #D2B48C;
+            border-bottom: 2px solid #D2B48C;
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3em;
+            color: #8B4513;
+            text-shadow: 0 0 20px rgba(139, 69, 19, 0.5);
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.3em;
+            color: #c0c0c0;
+            font-style: italic;
+        }
+        
+        /* Profile Section */
+        .profile-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: linear-gradient(180deg, rgba(139, 69, 19, 0.15) 0%, transparent 100%);
+            border-radius: 20px;
+        }
+        
+        .photo-frame {
+            width: 200px;
+            height: 250px;
+            border: 4px solid #8B4513;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-intro {
+            max-width: 500px;
+        }
+        
+        .profile-intro h2 {
+            font-family: 'Cinzel', serif;
+            color: #8B4513;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .profile-intro p {
+            line-height: 1.8;
+            color: #b0b0b0;
+        }
+        
+        /* Images Gallery */
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        
+        .gallery-item {
+            width: 280px;
+            text-align: center;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid #8B4513;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item p {
+            margin-top: 10px;
+            color: #D2B48C;
+            font-style: italic;
+        }
+        
+        .gallery-item.map-item img {
+            height: 300px;
+        }
+        
+        /* Sections */
+        .section {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.1) 0%, rgba(101, 67, 33, 0.1) 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 4px solid #8B4513;
+        }
+        
+        .section h2 {
+            font-family: 'Cinzel', serif;
+            color: #8B4513;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        /* Education Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(180deg, #8B4513, #654321);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 25px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #8B4513;
+            border-radius: 50%;
+            border: 2px solid #D2B48C;
+        }
+        
+        .timeline-item h4 {
+            color: #D2B48C;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-item .date {
+            color: #8B4513;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+        
+        /* Skills */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #8B4513, #654321);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 0.95em;
+            border: 1px solid rgba(210, 180, 140, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(139, 69, 19, 0.4);
+        }
+        
+        .skill-bar {
+            margin: 15px 0;
+        }
+        
+        .skill-bar .label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+        
+        .skill-bar .bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-bar .fill {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #8B4513, #A0522D);
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #8B4513, #654321);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1em;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: 2px solid #D2B48C;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.5);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            border-top: 2px solid #8B4513;
+            color: #888;
+        }
+        
+        footer .motto {
+            font-family: 'Cinzel', serif;
+            color: #8B4513;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .gallery-item {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
-    
-    <h2>Diseño de plantilla a dos columnas</h2>
-
-    <div class="fila">
-      <div id="c1" class="columna izquierda">
-        <h2>Columna Izquierda</h2>
-
-        <h2>Enlace a la Práctica 1 </h2>
-
-        <div class="iresponsive">
-            <img id="imghtml" src="html5.png" alt="html5" width="200" height="200">
-        </div>
-
-        <div class="iresponsive">
-            <img id="imgcss" src="css.png" alt="css" width="200" height="200">
-        </div>
-
-        <h2>Enlace a la Práctica 2 </h2>
-
-        <p>Senserit mediocrem vis ex, et dicunt deleniti gubergren mei. Mel id clita mollis repudiare. 
-            Sed ad nostro delicatissimi, postea pertinax est an. Adhuc sensibus percipitur sed te, 
-            eirmod tritani debitis nec ea. Cu vis quis gubergren.
-        </p>
+    <!-- Navigation Menu -->
+    <nav>
         <ul>
-            <li>Contacto</li>
-            <li>Formación</li>
-            <li>Experiencia</li>
-            <li>Acerca de</li>
+            <li><a href="index.html" class="active">Inicio</a></li>
+            <li><a href="about.html">Acerca de</a></li>
+            <li><a href="projects.html">Proyectos</a></li>
         </ul>
-
-        <h2>Enlace a la Práctica 3 </h2>
-      </div>
-      <div id="c2" class="columna derecha">
-        <h2>Columna Derecha</h2>
-        <img src="web-tech.png" alt="Tecnologías web">
-        <p>Senserit mediocrem vis ex, et dicunt deleniti gubergren mei. Mel id clita mollis repudiare. 
-            Sed ad nostro delicatissimi, postea pertinax est an. Adhuc sensibus percipitur sed te, 
-            eirmod tritani debitis nec ea. Cu vis quis gubergren.
-        </p>
-      </div>
+    </nav>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Violet Sorrengail</h1>
+            <p class="subtitle">"Moriremos aquellos que no deberían haber vivido"</p>
+            <p style="margin-top: 15px; font-size: 0.9em; color: #ffd700;">Jinete de Dragones · Estratega · Superviviente</p>
+        </header>
+        
+        <!-- Profile Section with Image -->
+        <section class="profile-section">
+            <div class="photo-frame">
+                <img src="Violet Sorrengail.jpeg" alt="Violet Sorrengail">
+            </div>
+            <div class="profile-intro">
+                <h2>La Comandante del Cuarto Ala</h2>
+                <p>
+                    Estudiante de tercer año en el Basgiath War College, desafiando todas las expectativas 
+                    como la primera mujer en sobrevivir el primer año. Hija del temible General Lilith Sorrengail, 
+                    he forjado mi camino a través de incontables batallas, vincularme con los dragones más poderosos 
+                    de la historia reciente, y liderar a mi escuadrón hacia la victoria contra todo pronóstico.
+                </p>
+                <a href="about.html" class="cta-button">Saber más sobre mí</a>
+            </div>
+        </section>
+        
+        <!-- Images Gallery -->
+        <section class="gallery">
+            <div class="gallery-item map-item">
+                <img src="mapa-de-navarre.jpeg" alt="Mapa de Navarre">
+                <p>Mapa del Frente Navarrense</p>
+            </div>
+        </section>
+        
+        <!-- Education Section -->
+        <section class="section">
+            <h2>🎓 Formación Académica</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Basgiath War College - 3er Año</h4>
+                    <p class="date">2025 · Quadrante de Jinetes</p>
+                    <p>Liderando el Cuarto Ala. Operaciones especiales en el Frente Navarrense. Estudio intensivo de técnicas de vinculación múltiple y arcanum avanzado.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Basgiath War College - 2º Año</h4>
+                    <p class="date">2024 · Quadrante de Jinetes</p>
+                    <p>Exámenes de mid-year completados con honores. Descubrimiento del venin y su amenaza. Infiltración en Aretia. Batalla contra los wyverns de Navarre.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Basgiath War College - 1er Año</h4>
+                    <p class="date">2023 · Quadrante de Jinetes</p>
+                    <p>Primera mujer en sobrevivir el primer año. Vinculación con Tairn. 327 duelos ganados. Clasificada como la mejor estratega de mi promoción.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Academia Militar Sorrengail</h4>
+                    <p class="date">Formación previa · Graduada con honores</p>
+                    <p>Hija del General Lilith Sorrengail. Preparación desde la infancia en historia militar, teoría de dragones y supervivencia extrema.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section class="section">
+            <h2>⚔️ Habilidades</h2>
+            
+            <h3 style="color: #D2B48C; margin: 20px 0 15px;">Habilidades de Combate</h3>
+            <div class="skill-bar">
+                <div class="label"><span>Estrategia Táctica</span><span>98%</span></div>
+                <div class="bar"><div class="fill" style="width: 98%;"></div></div>
+            </div>
+            <div class="skill-bar">
+                <div class="label"><span>Combate Cuerpo a Cuerpo</span><span>75%</span></div>
+                <div class="bar"><div class="fill" style="width: 75%;"></div></div>
+            </div>
+            <div class="skill-bar">
+                <div class="label"><span>Vuelo Táctico</span><span>90%</span></div>
+                <div class="bar"><div class="fill" style="width: 90%;"></div></div>
+            </div>
+            <div class="skill-bar">
+                <div class="label"><span>Supervivencia</span><span>95%</span></div>
+                <div class="bar"><div class="fill" style="width: 95%;"></div></div>
+            </div>
+            
+            <h3 style="color: #D2B48C; margin: 30px 0 15px;">Habilidades Intelectuales</h3>
+            <div class="skill-bar">
+                <div class="label"><span>Análisis Militar</span><span>97%</span></div>
+                <div class="bar"><div class="fill" style="width: 97%;"></div></div>
+            </div>
+            <div class="skill-bar">
+                <div class="label"><span>Historia de Wyverns</span><span>100%</span></div>
+                <div class="bar"><div class="fill" style="width: 100%;"></div></div>
+            </div>
+            <div class="skill-bar">
+                <div class="label"><span>Arcanum Táctico</span><span>88%</span></div>
+                <div class="bar"><div class="fill" style="width: 88%;"></div></div>
+            </div>
+            <div class="skill-bar">
+                <div class="label"><span>Mando de Escuadrón</span><span>95%</span></div>
+                <div class="bar"><div class="fill" style="width: 95%;"></div></div>
+            </div>
+            
+            <h3 style="color: #D2B48C; margin: 30px 0 15px;">Certificaciones</h3>
+            <div class="skills-grid">
+                <span class="skill-tag">Mando de Escuadrón</span>
+                <span class="skill-tag">Vuelo de Combate</span>
+                <span class="skill-tag">Estrategia Avanzada</span>
+                <span class="skill-tag">Primeros Auxilios</span>
+                <span class="skill-tag">Historia Wyvern</span>
+                <span class="skill-tag">Psicología de Batalla</span>
+                <span class="skill-tag">Arcanum Militar</span>
+                <span class="skill-tag">Supervivencia</span>
+                <span class="skill-tag">Táctica de Emboscada</span>
+                <span class="skill-tag">Vínculo Múltiple</span>
+                <span class="skill-tag">Defensa contra Venin</span>
+                <span class="skill-tag">Liderazgo Táctico</span>
+            </div>
+        </section>
+        
+        <footer>
+            <p class="motto">"Moriremos aquellos que no deberían haber vivido"</p>
+            <p>© 2024 Violet Sorrengail | Basgiath War College | Cuarto Ala</p>
+        </footer>
     </div>
-
 </body>
 </html>
+

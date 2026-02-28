@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV | Violet Sorrengail - Acerca de</title>
+    <link rel="stylesheet" href="2c-template.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: 
+                linear-gradient(180deg, rgba(47, 24, 16, 0.85) 0%, rgba(42, 33, 26, 0.9) 50%, rgba(26, 21, 18, 0.95) 100%),
+                url('Libros Fondos.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #e8e8e8;
+            min-height: 100vh;
+        }
+        
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.95) 0%, rgba(101, 67, 33, 0.95) 100%);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #8B4513;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5em;
+            color: #D2B48C;
+            text-decoration: none;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: #e8e8e8;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background: rgba(210, 180, 140, 0.2);
+            color: #D2B48C;
+        }
+        
+        nav a.active {
+            background: rgba(210, 180, 140, 0.3);
+            color: #D2B48C;
+            border-bottom: 2px solid #D2B48C;
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5em;
+            color: #8B4513;
+            text-shadow: 0 0 20px rgba(139, 69, 19, 0.5);
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            color: #c0c0c0;
+        }
+        
+        /* About Section */
+        .about-section {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.15) 0%, rgba(101, 67, 33, 0.15) 100%);
+            border-radius: 20px;
+            padding: 40px;
+            border: 2px solid #8B4513;
+            text-align: center;
+        }
+        
+        .photo-frame {
+            width: 200px;
+            height: 250px;
+            margin: 0 auto 30px;
+            border: 4px solid #8B4513;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .about-section h2 {
+            font-family: 'Cinzel', serif;
+            color: #D2B48C;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        
+        .about-section p {
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .quote {
+            font-style: italic;
+            border-left: 3px solid #8B4513;
+            padding-left: 20px;
+            margin: 30px 0;
+            color: #D2B48C;
+            text-align: left;
+        }
+        
+        /* Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .info-card {
+            background: rgba(139, 69, 19, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(139, 69, 19, 0.3);
+        }
+        
+        .info-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .info-card h4 {
+            color: #D2B48C;
+            margin-bottom: 5px;
+        }
+        
+        .info-card p {
+            font-size: 0.9em;
+            color: #888;
+            text-align: center;
+            margin: 0;
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #8B4513, #654321);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1em;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            border: 2px solid #D2B48C;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.5);
+        }
+        
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #D2B48C;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: rgba(139, 69, 19, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .back-link:hover {
+            background: rgba(139, 69, 19, 0.5);
+            transform: translateX(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            border-top: 2px solid #8B4513;
+            color: #888;
+        }
+        
+        footer .motto {
+            font-family: 'Cinzel', serif;
+            color: #8B4513;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .about-section {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="about.html" class="active">Acerca de</a></li>
+            <li><a href="projects.html">Proyectos</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Acerca de Mí</h1>
+            <p class="subtitle">Conoce más sobre Violet Sorrengail</p>
+        </header>
+        
+        <!-- About Section with Image -->
+        <section class="about-section">
+            <div class="photo-frame">
+                <img src="Violet Sorrengail.jpeg" alt="Violet Sorrengail">
+            </div>
+            
+            <h2>La Comandante del Cuarto Ala</h2>
+            
+            <p>
+                Estudiante de tercer año en el Basgiath War College, desafiando todas las expectativas 
+                como la primera mujer en sobrevivir el primer año. Hija del temible General Lilith Sorrengail, 
+                he forjado mi camino a través de incontables batallas, vincularme con los dragones más poderosos 
+                de la historia reciente, y liderar a mi escuadrón hacia la victoria contra todo pronóstico.
+            </p>
+            
+            <blockquote class="quote">
+                "No eres débil. Eres un arma esperando ser disparada."
+            </blockquote>
+            
+            <p>
+                Mi trayectoria en el Basgiath War College ha sido nada menos que legendaria. 
+                Desde mi primer día, cuando elegí el camino más difícil al entrar en la Academia de Jinetes,
+                convirtiéndome en la primera mujer en completar el primer año de entrenamiento, hasta las 
+                batallas y desafíos posteriores, he demostrado que quienes me cuestionaban estaban equivocados.
+            </p>
+            
+            <p>
+                A lo largo de mi viaje, he enfrentado los mayores peligros que el reino ha visto: 
+                wyverns corruptos por venin, misiones de infiltración en territorio enemigo, y la 
+                descubridor de secretos que podrían cambiar el destino de nuestra guerra. Pero cada 
+                desafío me ha hecho más fuerte.
+            </p>
+            
+            <!-- Info Cards -->
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="icon">🐉</div>
+                    <h4>Dragones</h4>
+                    <p>Tairn & Andarna</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">⚔️</div>
+                    <h4>Victorias</h4>
+                    <p>327+ Duelos</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">🏆</div>
+                    <h4>Rango</h4>
+                    <p>Comandante</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">🎓</div>
+                    <h4>Año</h4>
+                    <p>3er Año</p>
+                </div>
+            </div>
+            
+            <!-- Link to detailed curriculum -->
+            <a href="curriculum.html" class="cta-button">
+                Ver Curriculum Completo →
+            </a>
+        </section>
+        
+        <!-- Back to Home -->
+        <div style="text-align: center;">
+            <a href="index.html" class="back-link">
+                ← Volver a la página principal
+            </a>
+        </div>
+        
+        <footer>
+            <p class="motto">"Moriremos aquellos que no deberían haber vivido"</p>
+            <p>© 2024 Violet Sorrengail | Basgiath War College | Cuarto Ala</p>
+        </footer>
+    </div>
+</body>
+</html>
+

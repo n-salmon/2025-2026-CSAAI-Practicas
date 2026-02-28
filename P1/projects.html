@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV | Violet Sorrengail - Proyectos</title>
+    <link rel="stylesheet" href="2c-template.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: 
+                linear-gradient(180deg, rgba(47, 24, 16, 0.85) 0%, rgba(42, 33, 26, 0.9) 50%, rgba(26, 21, 18, 0.95) 100%),
+                url('Libros Fondos.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #e8e8e8;
+            min-height: 100vh;
+        }
+        
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.95) 0%, rgba(101, 67, 33, 0.95) 100%);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #8B4513;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5em;
+            color: #D2B48C;
+            text-decoration: none;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: #e8e8e8;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background: rgba(210, 180, 140, 0.2);
+            color: #D2B48C;
+        }
+        
+        nav a.active {
+            background: rgba(210, 180, 140, 0.3);
+            color: #D2B48C;
+            border-bottom: 2px solid #D2B48C;
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5em;
+            color: #8B4513;
+            text-shadow: 0 0 20px rgba(139, 69, 19, 0.5);
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            color: #c0c0c0;
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        /* Project Card */
+        .project-card {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.2) 0%, rgba(101, 67, 33, 0.2) 100%);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid #8B4513;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.4);
+            border-color: #D2B48C;
+        }
+        
+        .project-card h3 {
+            font-family: 'Cinzel', serif;
+            color: #D2B48C;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .project-card .description {
+            color: #b0b0b0;
+            line-height: 1.7;
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+        
+        .project-card .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tech-tag {
+            background: rgba(139, 69, 19, 0.4);
+            color: #D2B48C;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            border: 1px solid rgba(210, 180, 140, 0.3);
+        }
+        
+        .project-button {
+            display: block;
+            text-align: center;
+            background: linear-gradient(135deg, #8B4513, #654321);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid #D2B48C;
+        }
+        
+        .project-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(139, 69, 19, 0.5);
+        }
+        
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #D2B48C;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: rgba(139, 69, 19, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .back-link:hover {
+            background: rgba(139, 69, 19, 0.5);
+            transform: translateX(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            border-top: 2px solid #8B4513;
+            color: #888;
+        }
+        
+        footer .motto {
+            font-family: 'Cinzel', serif;
+            color: #8B4513;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="about.html">Acerca de</a></li>
+            <li><a href="projects.html" class="active">Proyectos</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>⚔️ Proyectos Militares</h1>
+            <p class="subtitle">Operaciones especiales y misiones de reconocimiento</p>
+        </header>
+        
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <article class="project-card">
+                <h3>🛡️ Operación Garganta del León</h3>
+                <p class="description">
+                    <strong>Fecha:</strong> Enero 2024<br>
+                    <strong>Ubicación:</strong> Frontera Norte<br><br>
+                    Primera línea de combate contra fuerzas revoltosas en la frontera norte. 
+                    Coordinación exitosa de 3 escuadrones de ataque, neutralización de 12 wyverns 
+                    enemigos y evacuación de 50 civiles. Una operación que demostró el poder 
+                    táctico del Cuarto Ala.
+                </p>
+                <p class="description">
+                    <strong>Resultados:</strong><br>
+                    ✓ 12 wyverns enemigos neutralizados<br>
+                    ✓ 50 civiles evacuados con éxito<br>
+                    ✓ Zero bajas en el Cuarto Ala<br>
+                    ✓ Coordinación de 3 escuadrones
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Estrategia Táctica</span>
+                    <span class="tech-tag">Coordinación de Escuadrones</span>
+                    <span class="tech-tag">Combate Aéreo</span>
+                    <span class="tech-tag">Liderazgo</span>
+                </div>
+            </article>
+            
+            <!-- Project 2 -->
+            <article class="project-card">
+                <h3>🌑 Misión Sombra</h3>
+                <p class="description">
+                    <strong>Fecha:</strong> Marzo 2024<br>
+                    <strong>Ubicación:</strong> Ala de la Muerte<br><br>
+                    Infiltración exitosa en territorio enemigo de la Ala de la Muerte. 
+                    Obtención de inteligencia crucial sobre los planes de Navarre. 
+                    Zero bajas en mi escuadrón. Descubrimiento del venin y su amenaza 
+                    para el reino.
+                </p>
+                <p class="description">
+                    <strong>Resultados:</strong><br>
+                    ✓ Inteligencia obtenida<br>
+                    ✓ Venin descubierto<br>
+                    ✓ Zero bajas<br>
+                    ✓Plan de Navarre comprometido
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Infiltración</span>
+                    <span class="tech-tag">Inteligencia</span>
+                    <span class="tech-tag">Operaciones Clandestinas</span>
+                    <span class="tech-tag">Análisis de Venin</span>
+                </div>
+            </article>
+            
+            <!-- Project 3 -->
+            <article class="project-card">
+                <h3>🥚 Proyecto Andarna</h3>
+                <p class="description">
+                    <strong>Fecha:</strong> 2024<br>
+                    <strong>Ubicación:</strong> Aretia<br><br>
+                    Descubrimiento y vinculación con Andarna, un dragón de dormancia 
+                    extremadamente raro del que se pensaba extinto. Coloración dorada 
+                    con reflejos verdes y capacidades únicas de control temporal. 
+                    Un vínculo que podría cambiar el destino de la guerra.
+                </p>
+                <p class="description">
+                    <strong>Resultados:</strong><br>
+                    ✓Dragón extinto redescubierto<br>
+                    ✓Vínculo dorado logrado<br>
+                    ✓Capacidad de control temporal<br>
+                    ✓Primera jinete en 100 años
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Vínculo Raro</span>
+                    <span class="tech-tag">Control Temporal</span>
+                    <span class="tech-tag">Dragón Dorado</span>
+                    <span class="tech-tag">Investigación</span>
+                </div>
+            </article>
+        </div>
+        
+        <!-- Back to Home -->
+        <div style="text-align: center;">
+            <a href="index.html" class="back-link">
+                ← Volver a la página principal
+            </a>
+        </div>
+        
+        <footer>
+            <p class="motto">"Moriremos aquellos que no deberían haber vivido"</p>
+            <p>© 2024 Violet Sorrengail | Basgiath War College | Cuarto Ala</p>
+        </footer>
+    </div>
+</body>
+</html>
+

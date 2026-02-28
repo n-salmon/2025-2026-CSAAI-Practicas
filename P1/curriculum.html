@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV | Violet Sorrengail - Alas de Sangre</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: 
+                linear-gradient(180deg, rgba(47, 24, 16, 0.85) 0%, rgba(42, 33, 26, 0.9) 50%, rgba(26, 21, 18, 0.95) 100%),
+                url('Libros Fondos.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #e8e8e8;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .wings-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.06;
+            background: 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10,50 Q30,20 50,50 Q70,80 90,50 L95,55 Q70,90 50,55 Q30,20 10,55 Z' fill='%238B4513'/%3E%3C/svg%3E") repeat-x;
+            animation: wingsFlap 20s linear infinite;
+            background-size: 200px 100px;
+        }
+        
+        @keyframes wingsFlap {
+            0% { background-position: 0 0; }
+            100% { background-position: -200px 0; }
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, 
+                rgba(139, 69, 19, 0.9) 0%, 
+                rgba(101, 67, 33, 0.8) 50%, 
+                rgba(47, 24, 16, 0.9) 100%);
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid #8B4513;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.4), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(139, 69, 19, 0.8), 0 0 60px rgba(139, 69, 19, 0.4);
+            letter-spacing: 3px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.3em;
+            color: #c0c0c0;
+            font-style: italic;
+        }
+        
+        .family-crest {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: radial-gradient(circle, #8B4513, #654321);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            border: 3px solid #D2B48C;
+            box-shadow: 0 0 30px rgba(139, 69, 19, 0.6);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(139, 69, 19, 0.6); }
+            50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(139, 69, 19, 0.9); }
+        }
+        
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px;
+            background: linear-gradient(180deg, rgba(139, 69, 19, 0.2) 0%, transparent 100%);
+        }
+        
+        .photo-frame {
+            position: relative;
+            width: 200px;
+            height: 250px;
+            border: 4px solid #8B4513;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(139, 69, 19, 0.3);
+            animation: frameGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes frameGlow {
+            0%, 100% { box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(139, 69, 19, 0.3); }
+            50% { box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 50px rgba(139, 69, 19, 0.6); }
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-intro {
+            max-width: 500px;
+        }
+        
+        .profile-intro h2 {
+            font-family: 'Cinzel', serif;
+            color: #8B4513;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .profile-intro p {
+            line-height: 1.8;
+            color: #b0b0b0;
+        }
+        
+        .quote {
+            font-style: italic;
+            border-left: 3px solid #8B4513;
+            padding-left: 20px;
+            margin-top: 20px;
+            color: #D2B48C;
+        }
+        
+        .columns {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 40px;
+            gap: 40px;
+        }
+        
+        .left-column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .right-column {
+            flex: 2;
+            min-width: 400px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+            position: relative;
+        }
+        
+        .section h2 {
+            font-family: 'Cinzel', serif;
+            color: #8B4513;
+            border-bottom: 2px solid linear-gradient(90deg, #8B4513, transparent);
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, #8B4513, transparent);
+        }
+        
+        .left-column h3 {
+            color: #D2B48C;
+            margin: 25px 0 15px;
+            font-size: 1.2em;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .contact-card {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(101, 67, 33, 0.3));
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(139, 69, 19, 0.3);
+        }
+        
+        .contact-card p {
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95em;
+        }
+        
+        .contact-card .icon {
+            width: 35px;
+            height: 35px;
+            background: rgba(139, 69, 19, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+        
+        .skill-bar {
+            margin: 15px 0;
+        }
+        
+        .skill-bar .label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+        
+        .skill-bar .bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-bar .fill {
+            height: 100%;
+            border-radius: 4px;
+            animation: fillGrow 1.5s ease-out forwards;
+        }
+        
+        @keyframes fillGrow {
+            from { width: 0; }
+        }
+        
+        .fill-red { background: linear-gradient(90deg, #8B4513, #A0522D); }
+        .fill-purple { background: linear-gradient(90deg, #654321, #8B4513); }
+        .fill-gold { background: linear-gradient(90deg, #D2B48C, #DEB887); }
+        
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #8B4513, #654321);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            border: 1px solid rgba(210, 180, 140, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(139, 69, 19, 0.4);
+        }
+        
+        .experience-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(139, 69, 19, 0.05) 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #8B4513;
+            transition: all 0.3s ease;
+        }
+        
+        .experience-item:hover {
+            transform: translateX(10px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(139, 69, 19, 0.1) 100%);
+        }
+        
+        .experience-item h4 {
+            color: #8B4513;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+        
+        .experience-item .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .experience-item .meta span {
+            color: #888;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .honor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .honor-card {
+            background: linear-gradient(135deg, rgba(210, 180, 140, 0.1), rgba(139, 69, 19, 0.1));
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(210, 180, 140, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .honor-card:hover {
+            transform: scale(1.05);
+            border-color: #D2B48C;
+            box-shadow: 0 5px 30px rgba(210, 180, 140, 0.2);
+        }
+        
+        .honor-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .honor-card .title {
+            color: #D2B48C;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .dragon-bond {
+            background: linear-gradient(135deg, rgba(101, 67, 33, 0.4) 0%, rgba(139, 69, 19, 0.4) 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 20px;
+            border: 2px solid #8B4513;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dragon-bond::before {
+            content: '🐉';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.1;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .dragon-bond h4 {
+            color: #8B4513;
+            font-family: 'Cinzel', serif;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+        
+        .dragon-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .dragon-stat {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        
+        .dragon-stat .value {
+            font-size: 1.5em;
+            color: #D2B48C;
+            font-weight: bold;
+        }
+        
+        .dragon-stat .label {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(180deg, #8B4513, #654321);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 25px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #8B4513;
+            border-radius: 50%;
+            border: 2px solid #D2B48C;
+        }
+        
+        .timeline-item h4 {
+            color: #D2B48C;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-item .date {
+            color: #8B4513;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+        
+        .footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            text-align: center;
+            border-top: 2px solid #8B4513;
+        }
+        
+        .footer .motto {
+            font-family: 'Cinzel', serif;
+            color: #8B4513;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        
+        .footer .credits {
+            color: #666;
+            font-size: 0.85em;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #8B4513, #654321);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid #D2B48C;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(139, 69, 19, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .columns {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .left-column, .right-column {
+                min-width: 100%;
+            }
+            
+            .dragon-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wings-bg"></div>
+    
+    <div class="container">
+        <header class="header">
+            <h1>Violet Sorrengail</h1>
+            <p class="subtitle">"Moriremos aquellos que no deberían haber vivido"</p>
+            <p style="margin-top: 15px; font-size: 0.9em; color: #ffd700;">Jinete de Dragones · Estratega · Superviviente</p>
+        </header>
+        
+        <section class="profile-section">
+            <div class="photo-frame">
+                <img src="Violet Sorrengail.jpeg" alt="Violet Sorrengail">
+            </div>
+            <div class="profile-intro">
+                <h2>La Comandante del Cuarto Ala</h2>
+                <p>
+                    Estudiante de segundo año en el Basgiath War College, desafiando todas las expectativas 
+                    como la primera mujer en sobrevivir el primer año. Hija del temible General Lilith Sorrengail, 
+                    he forjado mi camino a través de 327 bajas por duelo, vincularme con los dragones más poderosos 
+                    de la historia reciente, y liderar a mi escuadrón hacia la victoria contra todo pronóstico.
+                </p>
+                <p class="quote">
+                    "No eres débil. Eres un arma esperando ser disparada."
+                </p>
+            </div>
+        </section>
+        
+        <div class="columns">
+            <aside class="left-column">
+                <div class="section">
+                    <h3>📬 Contacto</h3>
+                    <div class="contact-card">
+                        <p><span class="icon">📍</span> Quadrante de Jinetes, Ala Norte</p>
+                        <p><span class="icon">🏰</span> Basgiath War College</p>
+                        <p><span class="icon">📧</span> v.sorrengail@basgiath.edu</p>
+                        <p><span class="icon">🐉</span> Tairn & Andarna</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3>⚔️ Habilidades de Combate</h3>
+                    <div class="skill-bar">
+                        <div class="label"><span>Estrategia Táctica</span><span>98%</span></div>
+                        <div class="bar"><div class="fill fill-red" style="width: 98%;"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="label"><span>Combate Cuerpo a Cuerpo</span><span>75%</span></div>
+                        <div class="bar"><div class="fill fill-red" style="width: 75%;"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="label"><span>Vuelo Táctico</span><span>90%</span></div>
+                        <div class="bar"><div class="fill fill-red" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="label"><span>Supervivencia</span><span>95%</span></div>
+                        <div class="bar"><div class="fill fill-red" style="width: 95%;"></div></div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3>🧠 Habilidades Intelectuales</h3>
+                    <div class="skill-bar">
+                        <div class="label"><span>Análisis Militar</span><span>97%</span></div>
+                        <div class="bar"><div class="fill fill-purple" style="width: 97%;"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="label"><span>Historia de Wyverns</span><span>100%</span></div>
+                        <div class="bar"><div class="fill fill-purple" style="width: 100%;"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="label"><span>Arcanum Táctico</span><span>88%</span></div>
+                        <div class="bar"><div class="fill fill-purple" style="width: 88%;"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="label"><span>Mando de Escuadrón</span><span>95%</span></div>
+                        <div class="bar"><div class="fill fill-purple" style="width: 95%;"></div></div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3>🔥 Estadísticas de Duelo</h3>
+                    <div class="honor-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="honor-card">
+                            <div class="icon">⚔️</div>
+                            <div class="title">327 Victorias</div>
+                        </div>
+                        <div class="honor-card">
+                            <div class="icon">🛡️</div>
+                            <div class="title">0 Derrotas</div>
+                        </div>
+                        <div class="honor-card">
+                            <div class="icon">💀</div>
+                            <div class="title">0 Muertes</div>
+                        </div>
+                        <div class="honor-card">
+                            <div class="icon">🏃</div>
+                            <div class="title">0 Deserciones</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            
+            <main class="right-column">
+                <div class="section">
+                    <h2>🎓 Educación</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>Basgiath War College - 3er Año</h4>
+                            <p class="date">2025 · Quadrante de Jinetes</p>
+                            <p>Liderando el Cuarto Ala. Operaciones especiales en el Frente Navarrense. Estudio intensivo de técnicas de vinculación múltiple y arcanum avanzado.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Basgiath War College - 2º Año</h4>
+                            <p class="date">2024 · Quadrante de Jinetes</p>
+                            <p>Exámenes de mid-year completados con honores. Descubrimiento del venin y su amenaza. Infiltración en Aretia. Batalla contra los wyverns de Navarre.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Basgiath War College - 1er Año</h4>
+                            <p class="date">2023 · Quadrante de Jinetes</p>
+                            <p>Primera mujer en sobrevivir el primer año. Vinculación con Tairn. 327 duelos ganados. Clasificada como la mejor estratega de mi promoción.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Academia Militar Sorrengail</h4>
+                            <p class="date">Formación previa · Graduada con honores</p>
+                            <p>Hija del General Lilith Sorrengail. Preparación desde la infancia en historia militar, teoría de dragones y supervivencia extrema.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>⚔️ Experiencia Militar</h2>
+                    <div class="experience-item">
+                        <h4>Batalla de la Garganta del León</h4>
+                        <div class="meta">
+                            <span>📅 Enero 2024</span>
+                            <span>📍 Frontera Norte</span>
+                        </div>
+                        <p>Primera línea de combate contra fuerzas revoltosas. Coordinación exitosa de 3 escuadrones de ataque, neutralización de 12 wyverns enemigos y evacuación de 50 civiles.</p>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <h4>Incursiones en las Porteries</h4>
+                        <div class="meta">
+                            <span>📅 2023-2024</span>
+                            <span>📍 Territorio hostil</span>
+                        </div>
+                        <p>Más de 50 misiones de reconocimiento en las regiones más peligrosas. Documentación de 8 nuevas especies de dragones y mapeo de zonas de conflicto.</p>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <h4>Misión Sombra</h4>
+                        <div class="meta">
+                            <span>📅 Marzo 2024</span>
+                            <span>📍 Ala de la Muerte</span>
+                        </div>
+                        <p>Infiltración exitosa en territorio enemigo. Obtención de inteligencia crucial sobre los planes de Navarre. Zero bajas en mi escuadrón.</p>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <h4>Operación Aretia</h4>
+                        <div class="meta">
+                            <span>📅 2024</span>
+                            <span>📍 Aretia</span>
+                        </div>
+                        <p>Viaje a las ruinas de Aretia en busca de respuestas. Descubrimiento del venin y su origen. Alianza estratégica para proteger el reino.</p>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <h4>Frente Navarrense</h4>
+                        <div class="meta">
+                            <span>📅 2024-2025</span>
+                            <span>📍 Frontera Navarre</span>
+                        </div>
+                        <p>Comandante de operaciones especiales contra las fuerzas de Navarre. Batallas contínuas contra wyverns corruptos por venin. Protección de civiles.</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>🏆 Logros y Honores</h2>
+                    <div class="honor-grid">
+                        <div class="honor-card">
+                            <div class="icon">👑</div>
+                            <div class="title">Sello de la Comandante</div>
+                        </div>
+                        <div class="honor-card">
+                            <div class="icon">🥇</div>
+                            <div class="title">Primera del Quadrante</div>
+                        </div>
+                        <div class="honor-card">
+                            <div class="icon">🐉</div>
+                            <div class="title">Premio al Valor</div>
+                        </div>
+                        <div class="honor-card">
+                            <div class="icon">⭐</div>
+                            <div class="title">Vínculo Dorado</div>
+                        </div>
+                        <div class="honor-card">
+                            <div class="icon">🗡️</div>
+                            <div class="title">Espada de Honor</div>
+                        </div>
+                        <div class="honor-card">
+                            <div class="icon">🛡️</div>
+                            <div class="title">Escudo de Basgiath</div>
+                        </div>
+                        <div class="honor-card">
+                            <div class="icon">🥚</div>
+                            <div class="title">Vínculo Raro</div>
+                        </div>
+                        <div class="honor-card">
+                            <div class="icon">📜</div>
+                            <div class="title">Tradición Wyvern</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>🐉 Vínculo con Tairn</h2>
+                    <div class="dragon-bond">
+                        <h4>Tairn - Dragón de Tormenta</h4>
+                        <p>El dragón de mayor rango en vincularse con un jinete en la última década. Coloración negra como la noche con chispas doradas. Capaz de invisibilidad y ataques de plasma de alta potencia.</p>
+                        <p style="margin-top: 15px; color: #c0c0c0; font-style: italic;">"La fuerza no siempre es lo que parece. Tu fragilidad es tu mayor arma." — Tairn</p>
+                        <div class="dragon-stats">
+                            <div class="dragon-stat">
+                                <div class="value">Nivel 8</div>
+                                <div class="label">Rango de Poder</div>
+                            </div>
+                            <div class="dragon-stat">
+                                <div class="value">Negro</div>
+                                <div class="label">Coloración</div>
+                            </div>
+                            <div class="dragon-stat">
+                                <div class="value">Intenso</div>
+                                <div class="label">Temperamento</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>🥚 Vínculo con Andarna</h2>
+                    <div class="dragon-bond" style="border-color: #D2B48C;">
+                        <h4 style="color: #D2B48C;">Andarna - Dragón de Dormancia</h4>
+                        <p>Mi segundo vínculo. Un dragón extremadamente raro del que se pensaba extinto. Coloración dorada con reflejos verdes y capacidades únicas de control temporal.</p>
+                        <p style="margin-top: 15px; color: #c0c0c0; font-style: italic;">"El tiempo es un círculo... y tú eres mi propósito." — Andarna</p>
+                        <div class="dragon-stats">
+                            <div class="dragon-stat">
+                                <div class="value">Nivel 7</div>
+                                <div class="label">Rango de Poder</div>
+                            </div>
+                            <div class="dragon-stat">
+                                <div class="value">Dorado</div>
+                                <div class="label">Coloración</div>
+                            </div>
+                            <div class="dragon-stat">
+                                <div class="value">Apacible</div>
+                                <div class="label">Temperamento</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>📚 Certificaciones</h2>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Mando de Escuadrón</span>
+                        <span class="skill-tag">Vuelo de Combate</span>
+                        <span class="skill-tag">Estrategia Avanzada</span>
+                        <span class="skill-tag">Primeros Auxilios</span>
+                        <span class="skill-tag">Historia Wyvern</span>
+                        <span class="skill-tag">Psicología de Batalla</span>
+                        <span class="skill-tag">Arcanum Militar</span>
+                        <span class="skill-tag">Supervivencia</span>
+                        <span class="skill-tag">Táctica de Emboscada</span>
+                        <span class="skill-tag">Vínculo Múltiple</span>
+                        <span class="skill-tag">Defensa contra Venin</span>
+                        <span class="skill-tag">Liderazgo Táctico</span>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>💬 Referencias</h2>
+                    <div class="experience-item">
+                        <h4>General Lilith Sorrengail</h4>
+                        <p class="meta"><span>Madre · Comandante del Tercer Ala</span></p>
+                        <p style="font-style: italic; color: #888;">"Violet desafía cada límite que se le impone. Su inteligencia y determinación la convierten en una de las guerreras más formidables que he conocido."</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4>Comandante Lerah</h4>
+                        <p class="meta"><span>Instructora Principal</span></p>
+                        <p style="font-style: italic; color: #888;">"La recluta más prometedora en 20 años de servicio. Si hay alguien que puede cambiar el destino de esta guerra, es ella."</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+        
+        <footer class="footer">
+            <a href="index.html" class="back-button">← Volver a Inicio</a>
+            <p class="motto">"Moriremos aquellos que no deberían haber vivido"</p>
+            <p class="credits">© 2024 Violet Sorrengail | Basgiath War College | Cuarto Ala</p>
+            <p style="margin-top: 10px; font-size: 0.8em; color: #444;">La sangre de mi sangre. El fuego de mi fuego.</p>
+        </footer>
+    </div>
+</body>
+</html>
+
