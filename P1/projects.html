@@ -169,11 +169,25 @@
             font-weight: bold;
             transition: all 0.3s ease;
             border: 2px solid #D2B48C;
+            cursor: pointer;
         }
         
         .project-button:hover {
             transform: scale(1.05);
             box-shadow: 0 5px 20px rgba(139, 69, 19, 0.5);
+        }
+        
+        .more-details {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            color: #b0b0b0;
+        }
+        
+        .more-details.show {
+            display: block;
         }
         
         /* Back Link */
@@ -282,6 +296,17 @@
                     <span class="tech-tag">Combate Aéreo</span>
                     <span class="tech-tag">Liderazgo</span>
                 </div>
+                <button class="project-button" onclick="toggleDetails(this)">Ver Más Detalles</button>
+                <div class="more-details">
+                    <p><strong>Detalles de la misión:</strong></p>
+                    <p>Coordinación de 3 escuadrones de ataque compuesto por 150 jinetes.
+                    Estrategia de cerco múltiple para rodear al enemigo. Antes de la batalla,
+                    realicé un análisis detallado del terreno, aprovechando las ventajas del
+                    valle para establecer emboscadas. Se utilizó el último sistema de comunicación
+                    dragon rider para asegurar la coordinación en tiempo real entre los escuadrones.</p>
+                    <p style="margin-top:10px;"><strong>Lecciones aprendidas:</strong></p>
+                    <p>La importancia de la comunicación en tiempo real y la flexibilidad táctica.</p>
+                </div>
             </article>
             
             <!-- Project 2 -->
@@ -307,6 +332,16 @@
                     <span class="tech-tag">Inteligencia</span>
                     <span class="tech-tag">Operaciones Clandestinas</span>
                     <span class="tech-tag">Análisis de Venin</span>
+                </div>
+                <button class="project-button" onclick="toggleDetails(this)">Ver Más Detalles</button>
+                <div class="more-details">
+                    <p><strong>Detalles de la misión:</strong></p>
+                    <p>Infiltración en las líneas enemigas usando un dragón con capacidad de
+                    invisibilidad. Colocación de dispositivos de escucha en los cuarteles generales
+                    del Ala de la Muerte. Documentación detallada de los planes de ataque de Navarre
+                    a través de la interceptación de mensajes.</p>
+                    <p style="margin-top:10px;"><strong>Descubrimiento clave:</strong></p>
+                    <p>El venin es una sustancia creada artificialmente que corrompe a los dragones.</p>
                 </div>
             </article>
             
@@ -334,6 +369,17 @@
                     <span class="tech-tag">Dragón Dorado</span>
                     <span class="tech-tag">Investigación</span>
                 </div>
+                <button class="project-button" onclick="toggleDetails(this)">Ver Más Detalles</button>
+                <div class="more-details">
+                    <p><strong>Detalles del vínculo:</strong></p>
+                    <p>Andarna es un dragón de dormancia, una especie que se creía extinta 
+                    hace más de 100 años. Su capacidad única de controlar el tiempo me permitió 
+                    experimentar fenómenos temporales durante el vuelo. El vínculo fue posible 
+                    gracias a la intervención de la naturaleza especial de Andarna.</p>
+                    <p style="margin-top:10px;"><strong>Importancia estratégica:</strong></p>
+                    <p>Su capacidad de dormir y permanecer inmóvil durante largos períodos la hace 
+                    invisible para los escáneres tradicionales de dragones.</p>
+                </div>
             </article>
         </div>
         
@@ -349,6 +395,19 @@
             <p>© 2024 Violet Sorrengail | Basgiath War College | Cuarto Ala</p>
         </footer>
     </div>
+    
+    <script>
+        function toggleDetails(button) {
+            const details = button.nextElementSibling;
+            if (details.classList.contains('show')) {
+                details.classList.remove('show');
+                button.textContent = 'Ver Más Detalles';
+            } else {
+                details.classList.add('show');
+                button.textContent = 'Ocultar Detalles';
+            }
+        }
+    </script>
 </body>
 </html>
 
