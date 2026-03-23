@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina la Clave Secreta - P2</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="game.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Adivina la Clave Secreta</h1>
+        
+        <!-- Clave secreta -->
+        <div class="secret-container">
+            <div class="secret-slot" id="slot0">*</div>
+            <div class="secret-slot" id="slot1">*</div>
+            <div class="secret-slot" id="slot2">*</div>
+            <div class="secret-slot" id="slot3">*</div>
+        </div>
+        
+        <!-- Contadores -->
+        <div class="counters">
+            <div class="counter">
+                <span>Intentos:</span>
+                <span id="attempts">7</span>
+            </div>
+            <div class="counter">
+                <span>Tiempo:</span>
+                <span id="timer">00:00.00</span>
+            </div>
+        </div>
+        
+        <!-- Dígitos 0-9 -->
+        <div class="digits-grid" id="digitsGrid">
+            <button class="digit-btn" id="digit0" value="0">0</button>
+            <button class="digit-btn" id="digit1" value="1">1</button>
+            <button class="digit-btn" id="digit2" value="2">2</button>
+            <button class="digit-btn" id="digit3" value="3">3</button>
+            <button class="digit-btn" id="digit4" value="4">4</button>
+            <button class="digit-btn" id="digit5" value="5">5</button>
+            <button class="digit-btn" id="digit6" value="6">6</button>
+            <button class="digit-btn" id="digit7" value="7">7</button>
+            <button class="digit-btn" id="digit8" value="8">8</button>
+            <button class="digit-btn" id="digit9" value="9">9</button>
+        </div>
+        
+        <!-- Controles -->
+        <div class="control-buttons">
+            <button id="startBtn">▶ Start</button>
+            <button id="stopBtn" disabled>⏸ Stop</button>
+            <button id="resetBtn">🔄 Reset</button>
+        </div>
+    </div>
+    
+    <!-- Modal Win -->
+    <div id="winModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>🎉 ¡VICTORIA!</h2>
+            <p id="winMessage"></p>
+            <button id="resetFromWin">Nueva partida</button>
+        </div>
+    </div>
+    
+    <!-- Modal Lose -->
+    <div id="loseModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>💀 ¡GAME OVER!</h2>
+            <p id="loseMessage"></p>
+            <p>Clave: <span id="revealedSecret"></span></p>
+            <button id="resetFromLose">Nueva partida</button>
+        </div>
+    </div>
+</body>
+</html>
