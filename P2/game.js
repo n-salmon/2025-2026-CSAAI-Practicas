@@ -1,4 +1,4 @@
-// P2/game.js - FUNCIONANDO 100% - IDs coinciden con index.html
+// P2/game.js - FIXED WIN/LOSE ORDER + ROBUST
 
 let secret = [];
 let attempts = 7;
@@ -15,8 +15,8 @@ let slotElements = [];
 function formatTime(cs) {
     const mins = Math.floor(cs / 6000).toString().padStart(2, '0');
     const secs = Math.floor((cs % 6000) / 100).toString().padStart(2, '0');
-    const cs10 = (cs % 100).toString().padStart(2, '0');
-    return `${mins}:${secs}.${cs10}`;
+    const csec = (cs % 100).toString().padStart(2, '0');
+    return `${mins}:${secs}.${csec}`;
 }
 
 function generateSecret() {
@@ -43,12 +43,14 @@ function updateDisplays() {
         }
     }
     
-    document.getElementById('startBtn').disabled = isRunning || !gameActive;
-    document.getElementById('stopBtn').disabled = !isRunning;
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    startBtn.disabled = isRunning || !gameActive;
+    stopBtn.disabled = !isRunning;
 }
 
 function checkWin() {
-    return slotElements.every(slot => slot.classList.contains('correct'));
+    return slotElements.every(slot => slot.textContent !== '*' && slot.classList.contains('correct'));
 }
 
 function digitClick(digit) {
@@ -57,7 +59,6 @@ function digitClick(digit) {
     usedDigits.add(digit);
     attempts--;
     
-    // Revela TODAS las posiciones con este dígito
     slotElements.forEach((slot, index) => {
         if (slot.textContent === '*' && secret[index] === digit) {
             slot.textContent = digit;
@@ -67,10 +68,11 @@ function digitClick(digit) {
     
     updateDisplays();
     
-    if (attempts <= 0) {
-        gameOver(false);
-    } else if (checkWin()) {
+    // FIXED: Check WIN FIRST, then LOSE
+    if (checkWin()) {
         gameOver(true);
+    } else if (attempts <= 0) {
+        gameOver(false);
     }
 }
 
@@ -94,15 +96,15 @@ function stopTimer() {
     }
 }
 
-function gameOver(victory) {
+function gameOver(isWin) {
     gameActive = false;
     stopTimer();
-    if (victory) {
+    if (isWin) {
         const used = maxAttempts - attempts;
-        document.getElementById('winMessage').textContent = `¡VICTORIA en ${formatTime(elapsedTime)}! Intentos usados: ${used}, restantes: ${attempts}`;
+        document.getElementById('winMessage').textContent = `¡VICTORIA! Tiempo: ${formatTime(elapsedTime)}, usados: ${used}, restantes: ${attempts}`;
         document.getElementById('winModal').classList.remove('hidden');
     } else {
-        document.getElementById('loseMessage').textContent = '¡Intentos agotados!';
+        document.getElementById('loseMessage').textContent = '¡GAME OVER! Intentos agotados.';
         document.getElementById('revealedSecret').textContent = secret.join('');
         document.getElementById('loseModal').classList.remove('hidden');
     }
@@ -120,14 +122,14 @@ function resetGame() {
         slot.classList.remove('correct');
     });
     updateDisplays();
-    document.getElementById('winModal').classList.add('hidden');
-    document.getElementById('loseModal').classList.add('hidden');
+    document.querySelectorAll('.modal').forEach(modal => modal.classList.add('hidden'));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     slots.forEach(id => slotElements.push(document.getElementById(id)));
     
     generateSecret();
+    slotElements.forEach(slot => slot.textContent = '*');
     updateDisplays();
     
     // Dígitos
@@ -139,12 +141,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('startBtn').onclick = startTimer;
     document.getElementById('stopBtn').onclick = stopTimer;
     document.getElementById('resetBtn').onclick = resetGame;
-    
     document.getElementById('resetFromWin').onclick = resetGame;
     document.getElementById('resetFromLose').onclick = resetGame;
     
-    // Auto-start timer primer dígito
+    // Auto-start primer clic dígito
     document.getElementById('digitsGrid').onclick = (e) => {
-        if (e.target.classList.contains('digit-btn') && !isRunning) startTimer();
+        if (e.target.classList.contains('digit-btn') && !isRunning) {
+            startTimer();
+        }
     };
 });
