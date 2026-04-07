@@ -134,6 +134,7 @@
 
     function drawPlayer() { ctx.drawImage(playerImg, player.x, player.y, player.w, player.h); }
     function drawAlien(a) { ctx.drawImage(alienImg, a.x, a.y, a.w, a.h); }
+
     function drawBullets() {
         ctx.fillStyle = "yellow"; bullets.forEach(b => ctx.fillRect(b.x, b.y, 4, 10));
         ctx.fillStyle = "red"; enemyBullets.forEach(b => ctx.fillRect(b.x, b.y, 4, 10));
