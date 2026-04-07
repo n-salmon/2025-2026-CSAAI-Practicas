@@ -64,7 +64,7 @@
             bullets.push({ x: player.x + player.w / 2 - 2, y: player.y, speed: 7 });
             energy--;
             lastShot = time;
-            document.getElementById("shootSound").play().catch(e => {}); // sound
+            document.getElementById("shootSound").cloneNode(true).play().catch(e => {}); // laser multiple
         }
 
         if (energy < maxEnergy) { energy += 0.01; if (energy > maxEnergy) energy = maxEnergy; }
@@ -102,7 +102,7 @@
             aliens.forEach(a => {
                 if (a.alive && b.x < a.x + a.w && b.x + 4 > a.x && b.y < a.y + a.h && b.y + 10 > a.y) {
                     a.alive = false; bullets.splice(i, 1); score += 10;
-                    document.getElementById("explosionSound").play().catch(e => {}); // explosion
+                    document.getElementById("explosionSound").cloneNode(true).play().catch(e => {}); // explosion multiple
                 }
             });
         });
@@ -111,7 +111,7 @@
             if (b.x > player.x && b.x < player.x + player.w && b.y > player.y && b.y < player.y + player.h) {
                 enemyBullets.splice(i, 1);
                 lives--;
-                document.getElementById("explosionSound").play().catch(e => {}); // hit
+                document.getElementById("explosionSound").cloneNode(true).play().catch(e => {}); // hit multiple
                 if (lives <= 0) gameOver();
             }
         });
