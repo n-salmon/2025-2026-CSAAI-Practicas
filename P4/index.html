@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beat the Word</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Beat the Word</h1>
+    <p>Sigue la secuencia iluminada</p>
+</header>
+
+<section id="controls">
+
+    <div class="control-group">
+        <label>Pareja</label>
+        <select id="pairSelect">
+            <option value="dogcat">Perro vs Gato </option>
+            <option value="applebanana">Manzana vs Plátano </option>
+            <option value="housecar">Casa vs Coche </option>
+        </select>
+    </div>
+
+    <div class="control-group">
+        <label>Nivel inicial</label>
+        <select id="levelSelect">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+
+    <div class="control-group">
+        <label>
+            <input type="checkbox" id="musicToggle" checked>
+            Música
+        </label>
+    </div>
+
+    <button id="startBtn">Start</button>
+    <button id="stopBtn" disabled>⏹ Stop</button>
+
+</section>
+
+<section id="display">
+    <div class="stats">
+        <span id="currentLevel">Nivel: -</span>
+        <span id="timer">Tiempo: 0s</span>
+    </div>
+
+    <div id="gameStatus" class="status-msg">
+        ¡Elige y comienza!
+    </div>
+</section>
+
+<main>
+    <div id="wordArea" class="word-display">
+        Palabra aparecerá aquí
+    </div>
+
+    <div id="grid" class="grid"></div>
+</main>
+
+<footer>
+    <p>CSAAI 2025-2026</p>
+</footer>
+
+<audio id="bgMusic" loop>
+    <source src="cancion.mp3" type="audio/mpeg">
+</audio>
+
+<script src="game.js"></script>
+</body>
+</html>
