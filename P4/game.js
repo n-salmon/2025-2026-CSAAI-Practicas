@@ -63,10 +63,13 @@ const els = {
     level: document.getElementById("currentLevel"),
     timer: document.getElementById("timer"),
     word: document.getElementById("wordArea"),
-    grid: document.getElementById("grid")
+    grid: document.getElementById("grid"),
+    musicaBtn: document.getElementById("toggleMusica"),
 };
 
 let gridItems = [];
+let musicaActiva = false;
+let audio = document.getElementById("audio");
 
 /* INIT */
 function init() {
@@ -168,15 +171,15 @@ function playRound(){
 
 // MÚSICA
 
-musicaBtn.onclick = () => {
+els.musicaBtn.onclick = () => {
   musicaActiva = !musicaActiva;
 
   if (musicaActiva) {
-    musicaBtn.textContent = "Música ON";
-    if (jugando) audio.play();
+    els.musicaBtn.textContent = "Música ON";
+    if (state.isPlaying && audio) audio.play();
   } else {
-    musicaBtn.textContent = "Música OFF";
-    audio.pause();
+    els.musicaBtn.textContent = "Música OFF";
+    if (audio) audio.pause();
   }
 };
 
