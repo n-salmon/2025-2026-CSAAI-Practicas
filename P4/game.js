@@ -1,9 +1,5 @@
 const PAIRS = {
-    dogcat: {
-        wordA: 'PERRO',
-        wordB: 'GATO',
-        imgA: 'img/perro.png',
-        imgB: 'img/gato.png',
+    dogcat: { wordA: 'PERRO', wordB: 'GATO', imgA: 'img/perro.png', imgB: 'img/gato.png',
         levels: [
             [true,true,true,true,false,false,false,false],
             [true,false,true,false,true,false,true,false],
@@ -12,11 +8,7 @@ const PAIRS = {
             [false,true,false,true,true,false,true,false]
         ]
     },
-    applebanana: {
-        wordA: 'MANZANA',
-        wordB: 'PLÁTANO',
-        imgA: 'img/manzana.png',
-        imgB: 'img/platano.png',
+    applebanana: { wordA: 'MANZANA', wordB: 'PLÁTANO', imgA: 'img/manzana.png', imgB: 'img/platano.png',
         levels: [
             [true,true,true,true,false,false,false,false],
             [true,false,true,false,true,false,true,false],
@@ -25,11 +17,7 @@ const PAIRS = {
             [false,true,false,true,true,false,true,false]
         ]
     },
-    housecar: {
-        wordA: 'CASA',
-        wordB: 'COCHE',
-        imgA: 'img/casa.png',
-        imgB: 'img/coche.png',
+    housecar: { wordA: 'CASA', wordB: 'COCHE', imgA: 'img/casa.png', imgB: 'img/coche.png',
         levels: [
             [true,true,true,true,false,false,false,false],
             [true,false,true,false,true,false,true,false],
@@ -61,17 +49,14 @@ const els = {
     timer: document.getElementById("timer"),
     word: document.getElementById("wordArea"),
     grid: document.getElementById("grid"),
-    musicaBtn: document.getElementById("toggleMusica"),
+    musicaToggle: document.getElementById("musicToggle"),
 };
 
 let gridItems = [];
-let musicaActiva = false;
-let audio = document.getElementById("audio");
+let musicaActiva = els.musicaToggle.checked;
+let audio = document.getElementById("bgMusic");
 
-// 🔥 activar loop
-audio.loop = true;
-
-/* INIT */
+// INIT GRID
 function init() {
     for(let i=0;i<8;i++){
         let div = document.createElement("div");
@@ -81,7 +66,7 @@ function init() {
     }
 }
 
-/* START */
+// START GAME
 function startGame(){
     state.isPlaying = true;
     state.curLevel = parseInt(els.levelSelect.value);
@@ -93,21 +78,21 @@ function startGame(){
     els.pair.disabled = true;
     els.levelSelect.disabled = true;
 
-    // ▶️ reproducir música si está activada
+    // Reproducir música si está activa
     if (musicaActiva) {
         audio.currentTime = 0;
-        audio.play().catch(() => {});
+        audio.play().catch(()=>{});
     }
 
     nextLevel();
 }
 
-/* STOP */
+// STOP GAME
 function stopGame(){
     state.isPlaying = false;
     clearTimeout(state.interval);
 
-    // ⏹ parar música
+    // Parar música
     audio.pause();
     audio.currentTime = 0;
 
@@ -117,27 +102,21 @@ function stopGame(){
     els.levelSelect.disabled = false;
 }
 
-/* GRID */
+// LOAD GRID
 function loadGrid(){
     const pair = PAIRS[state.pair];
     state.gridData = pair.levels[state.curLevel - 1];
 
     gridItems.forEach((item, i) => {
         if(state.gridData[i]){
-            item.innerHTML = `
-                <img src="${pair.imgA}">
-                <div class="label">${pair.wordA}</div>
-            `;
+            item.innerHTML = `<img src="${pair.imgA}"><div class="label">${pair.wordA}</div>`;
         } else {
-            item.innerHTML = `
-                <img src="${pair.imgB}">
-                <div class="label">${pair.wordB}</div>
-            `;
+            item.innerHTML = `<img src="${pair.imgB}"><div class="label">${pair.wordB}</div>`;
         }
     });
 }
 
-/* LEVEL */
+// NEXT LEVEL
 function nextLevel(){
     if(state.curLevel > 5){
         els.word.textContent = "FIN";
@@ -146,15 +125,13 @@ function nextLevel(){
     }
 
     els.level.textContent = "Nivel: " + state.curLevel;
-
     loadGrid();
-
     state.seqPos = 0;
 
     setTimeout(playRound, 1000);
 }
 
-/* ROUND */
+// PLAY ROUND
 function playRound(){
     if(!state.isPlaying) return;
 
@@ -164,7 +141,6 @@ function playRound(){
     const pair = PAIRS[state.pair];
 
     gridItems[state.seqPos].classList.add("highlight");
-
     els.word.textContent = current ? pair.wordA : pair.wordB;
 
     state.seqPos++;
@@ -178,25 +154,20 @@ function playRound(){
     state.interval = setTimeout(playRound, SPEEDS[state.curLevel-1]);
 }
 
-/* BOTÓN MÚSICA */
-els.musicaBtn.onclick = () => {
-    musicaActiva = !musicaActiva;
+// MÚSICA con checkbox
+els.musicaToggle.addEventListener("change", () => {
+    musicaActiva = els.musicaToggle.checked;
 
-    if (musicaActiva) {
-        els.musicaBtn.textContent = "Música ON";
-
-        if (state.isPlaying) {
-            audio.currentTime = 0;
-            audio.play().catch(() => {});
+    if(musicaActiva){
+        if(state.isPlaying){
+            audio.play().catch(()=>{});
         }
-
     } else {
-        els.musicaBtn.textContent = "Música OFF";
         audio.pause();
     }
-};
+});
 
-/* TIMER */
+// TIMER
 function updateTimer(){
     if(state.isPlaying){
         let t = Math.floor((Date.now()-state.startTime)/1000);
@@ -205,11 +176,10 @@ function updateTimer(){
     requestAnimationFrame(updateTimer);
 }
 
-/* EVENTS */
+// EVENTS
 els.start.onclick = startGame;
 els.stop.onclick = stopGame;
 
+// INIT
 init();
 updateTimer();
-
-/* Comentario */
