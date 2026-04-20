@@ -165,6 +165,21 @@ function playRound(){
     state.interval = setTimeout(playRound, SPEEDS[state.curLevel-1]);
 }
 
+
+// MÚSICA
+
+musicaBtn.onclick = () => {
+  musicaActiva = !musicaActiva;
+
+  if (musicaActiva) {
+    musicaBtn.textContent = "Música ON";
+    if (jugando) audio.play();
+  } else {
+    musicaBtn.textContent = "Música OFF";
+    audio.pause();
+  }
+};
+
 /* TIMER */
 function updateTimer(){
     if(state.isPlaying){
