@@ -175,11 +175,11 @@ els.musicaBtn.onclick = () => {
   musicaActiva = !musicaActiva;
 
   if (musicaActiva) {
-    els.musicaBtn.textContent = "Música ON";
-    if (state.isPlaying && audio) audio.play();
+    musicaBtn.textContent = "Música ON";
+    if (jugando) audio.play();
   } else {
-    els.musicaBtn.textContent = "Música OFF";
-    if (audio) audio.pause();
+    musicaBtn.textContent = "Música OFF";
+    audio.pause();
   }
 };
 
