@@ -25,8 +25,6 @@ const PAIRS = {
             [false,true,false,true,true,false,true,false]
         ]
     },
-
-
     housecar: {
         wordA: 'CASA',
         wordB: 'COCHE',
@@ -40,7 +38,6 @@ const PAIRS = {
             [false,true,false,true,true,false,true,false]
         ]
     }
-
 };
 
 const SPEEDS = [2000,1600,1200,800,500];
@@ -71,6 +68,9 @@ let gridItems = [];
 let musicaActiva = false;
 let audio = document.getElementById("audio");
 
+// 🔥 activar loop
+audio.loop = true;
+
 /* INIT */
 function init() {
     for(let i=0;i<8;i++){
@@ -93,6 +93,12 @@ function startGame(){
     els.pair.disabled = true;
     els.levelSelect.disabled = true;
 
+    // ▶️ reproducir música si está activada
+    if (musicaActiva) {
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+    }
+
     nextLevel();
 }
 
@@ -101,13 +107,17 @@ function stopGame(){
     state.isPlaying = false;
     clearTimeout(state.interval);
 
+    // ⏹ parar música
+    audio.pause();
+    audio.currentTime = 0;
+
     els.start.disabled = false;
     els.stop.disabled = true;
     els.pair.disabled = false;
     els.levelSelect.disabled = false;
 }
 
-/* CARGAR GRID */
+/* GRID */
 function loadGrid(){
     const pair = PAIRS[state.pair];
     state.gridData = pair.levels[state.curLevel - 1];
@@ -168,19 +178,22 @@ function playRound(){
     state.interval = setTimeout(playRound, SPEEDS[state.curLevel-1]);
 }
 
-
-// MÚSICA
-
+/* BOTÓN MÚSICA */
 els.musicaBtn.onclick = () => {
-  musicaActiva = !musicaActiva;
+    musicaActiva = !musicaActiva;
 
-  if (musicaActiva) {
-    musicaBtn.textContent = "Música ON";
-    if (jugando) audio.play();
-  } else {
-    musicaBtn.textContent = "Música OFF";
-    audio.pause();
-  }
+    if (musicaActiva) {
+        els.musicaBtn.textContent = "Música ON";
+
+        if (state.isPlaying) {
+            audio.currentTime = 0;
+            audio.play().catch(() => {});
+        }
+
+    } else {
+        els.musicaBtn.textContent = "Música OFF";
+        audio.pause();
+    }
 };
 
 /* TIMER */
@@ -198,3 +211,5 @@ els.stop.onclick = stopGame;
 
 init();
 updateTimer();
+
+/* Comentario */
