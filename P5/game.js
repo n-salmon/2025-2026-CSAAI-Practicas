@@ -7,6 +7,9 @@ const finalScreen = document.getElementById('final-screen');
 const messageOverlay = document.getElementById('message-overlay');
 const messageText = document.getElementById('message-text');
 const countdownOverlay = document.getElementById('countdown');
+const stateMessages = document.getElementById('state-messages');
+
+
 const countdownNumber = document.getElementById('countdown-number');
 
 const btn3Goals = document.getElementById('btn-3-goals');
@@ -134,9 +137,27 @@ function showScreen(screen) {
 }
 
 function showMessage(text) {
+    // Overlay central (puntual)
     messageText.textContent = text;
     messageOverlay.classList.remove('hidden');
+
+    // Panel de estado (acumulación)
+    if (stateMessages) {
+        const line = document.createElement('div');
+        line.className = 'state-message-line';
+        line.textContent = text;
+        stateMessages.appendChild(line);
+
+        // Mantener solo las últimas N entradas
+        const maxLines = 6;
+        while (stateMessages.children.length > maxLines) {
+            stateMessages.removeChild(stateMessages.firstChild);
+        }
+        stateMessages.scrollTop = stateMessages.scrollHeight;
+    }
 }
+
+
 
 function hideMessage() {
     messageOverlay.classList.add('hidden');
@@ -183,6 +204,10 @@ function initializeGame() {
     state.rounds = 0;
     updateScoreboard();
     resetEntities();
+    if (stateMessages) {
+        stateMessages.innerHTML = '';
+    }
+
     modeText.textContent = state.goldenGoal ? 'Gol de Oro' : `Partido a ${state.targetScore} goles`;
     showMessage('¡Vamos!');
     startCountdown(() => {
@@ -190,6 +215,7 @@ function initializeGame() {
         hideMessage();
     });
 }
+
 
 function resetBall() {
     ball.x = config.width / 2;
@@ -705,8 +731,12 @@ function resetGame() {
     state.current = 'menu';
     hideMessage();
     hideCountdown();
+    if (stateMessages) {
+        stateMessages.innerHTML = '';
+    }
     showScreen('menu');
 }
+
 
 btn3Goals.addEventListener('click', () => {
     setMode('3goals');
@@ -737,7 +767,10 @@ btnMenu.addEventListener('click', () => {
 
 btnMenuLive.addEventListener('click', () => {
     resetGame();
+    keys.Space = false;
 });
+
+
 
 
 window.addEventListener('keydown', (event) => {

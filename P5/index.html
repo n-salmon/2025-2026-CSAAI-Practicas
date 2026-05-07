@@ -46,13 +46,26 @@
             </div>
 
 
-            <!-- Canvas del juego -->
-            <canvas id="game-canvas"></canvas>
+            <div id="game-layout">
+                <!-- Canvas del juego -->
+                <div id="canvas-wrapper">
+                    <canvas id="game-canvas"></canvas>
+                </div>
 
-            <!-- Mensajes overlay -->
+                <!-- Panel de estado (sidebar lado derecho) -->
+                <div id="state-panel">
+                    <div class="state-title">Mensajes</div>
+                    <div id="state-messages" class="state-messages"></div>
+                </div>
+            </div>
+
+
+
+            <!-- Mensajes overlay (centro, puntuales) -->
             <div id="message-overlay" class="overlay hidden">
                 <div id="message-text"></div>
             </div>
+
 
             <!-- Cuenta atrás -->
             <div id="countdown" class="overlay hidden">

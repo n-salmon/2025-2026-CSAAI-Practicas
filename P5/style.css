@@ -17,8 +17,9 @@ body {
 }
 
 #game-container {
-    width: 100%;
-    max-width: 1000px;
+    width: 120%;
+    max-width: 1100px;
+
     aspect-ratio: 4/3;
     position: relative;
 }
@@ -137,13 +138,31 @@ body {
 #game-screen {
     background: #1a472a;
     padding: 0;
+    overflow: hidden;
 }
+
+#game-layout {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+}
+
+#canvas-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
 
 #scoreboard {
     position: absolute;
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
+    /* Referido al contenedor (game-screen), que incluye sidebar */
+
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -186,6 +205,8 @@ body {
     top: 60px;
     left: 50%;
     transform: translateX(-50%);
+    /* Mantener centrado sobre el “área” general */
+
     display: flex;
     align-items: center;
     gap: 0.8rem;
@@ -235,6 +256,15 @@ body {
     display: block;
 }
 
+/* El canvas-wrapper no debe quedar tapado por el sidebar */
+#state-panel {
+    flex: 0 0 190px;
+}
+
+
+
+
+
 /* Overlays */
 .overlay {
     position: absolute;
@@ -253,9 +283,64 @@ body {
     display: none;
 }
 
+#state-panel {
+    position: relative;
+    top: 0;
+    right: 0;
+
+    height: auto;
+    margin: 90px 10px 0 0; /* “pegado” a la derecha y empezando como antes */
+
+    background: rgba(0, 0, 0, 0.45);
+    border: 2px solid rgba(255, 215, 0, 0.6);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    z-index: 15;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: stretch;
+}
+
+
+
+
+.state-title {
+    color: #ffd700;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+}
+
+.state-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    color: #a8d5a2;
+    font-size: 1.05rem;
+    line-height: 1.25;
+    max-height: 260px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    padding-right: 4px;
+}
+
+.state-message-line {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.25rem 0.4rem;
+    border-radius: 6px;
+}
+
+
 #message-overlay {
     background: rgba(0, 0, 0, 0.6);
 }
+
+
 
 #message-text {
     font-size: 4rem;
@@ -343,6 +428,11 @@ body {
 
 /* Diseño responsivo */
 @media (max-width: 768px) {
+    #state-panel {
+        flex-basis: 220px;
+        margin-right: 6px;
+    }
+
     #menu-screen h1 {
         font-size: 2.5rem;
     }
@@ -362,6 +452,21 @@ body {
 }
 
 @media (max-width: 480px) {
+    #game-layout {
+        flex-direction: column;
+    }
+
+    #state-panel {
+        flex: 0 0 auto;
+        margin: 0 0 10px 0;
+        width: calc(100% - 20px);
+        pointer-events: none;
+    }
+
+    #canvas-wrapper {
+        flex: 1;
+    }
+
     #menu-screen h1 {
         font-size: 2rem;
     }
